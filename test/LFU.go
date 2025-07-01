@@ -20,7 +20,7 @@ type LFUCache struct {
 }
 
 // Constructor 初始化 LFUCache
-func Constructor(capacity int) LFUCache {
+func NewConstructor(capacity int) LFUCache {
 	return LFUCache{
 		capacity: capacity,
 		cache:    make(map[int]*Node),
