@@ -16,8 +16,10 @@ type User struct {
 }
 
 func main() {
-	//jsonData := `{"name": null, "age": null}`
-	jsonData := ""
+	//jsonData := `{"name": "a", "age": "b"}`
+	//jsonData := ""
+	//jsonData := `{"name": null, "age": "b"}`
+	jsonData := `{"age": "b"}`
 
 	var user User
 	err := json.Unmarshal([]byte(jsonData), &user)
@@ -25,7 +27,8 @@ func main() {
 		fmt.Println("Error:", err)
 		return
 	}
-	fmt.Println(user)
+	fmt.Println(user.Age)
+	fmt.Println(user.Name)
 }
 
 func extractDescription(text string) string {
