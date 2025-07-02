@@ -1,6 +1,7 @@
 package main
 
 import (
+	"awesomeProject/test"
 	"encoding/json"
 	"fmt"
 	"regexp"
@@ -16,6 +17,20 @@ type User struct {
 }
 
 func main() {
+	lfu := test.NewLFUCacheNew(2)
+	lfu.Put(1, 1)           // 缓存是 {1=1}
+	lfu.Put(2, 2)           // 缓存是 {1=1, 2=2}
+	fmt.Println(lfu.Get(1)) // 返回 1
+	lfu.Put(3, 3)           // 去除键 2，缓存是 {1=1, 3=3}
+	fmt.Println(lfu.Get(2)) // 返回 -1 (未找到)
+	fmt.Println(lfu.Get(3)) // 返回 -1 (未找到)
+	lfu.Put(4, 4)           // 去除键 1，缓存是 {3=3, 4=4}
+	fmt.Println(lfu.Get(1)) // 返回 -1 (未找到)
+	fmt.Println(lfu.Get(3)) // 返回 3
+	fmt.Println(lfu.Get(4)) // 返回 4
+}
+
+func jsonText() {
 	//jsonData := `{"name": "a", "age": "b"}`
 	//jsonData := ""
 	//jsonData := `{"name": null, "age": "b"}`

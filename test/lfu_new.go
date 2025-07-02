@@ -34,7 +34,7 @@ func (lfu *LFUCacheNew) Get(key int) int {
 }
 
 func (lfu *LFUCacheNew) Put(key int, value int) {
-	if lfu.capacity == 0 {
+	if lfu.capacity <= 0 {
 		return
 	}
 	if node, ok := lfu.cache[key]; ok {
@@ -51,6 +51,9 @@ func (lfu *LFUCacheNew) Put(key int, value int) {
 			freq:  1,
 		}
 		lfu.cache[key] = newNode
+		if lfu.freqMap[1] == nil {
+			lfu.freqMap[1] = list.New()
+		}
 		newNode.listE = lfu.freqMap[1].PushFront(newNode)
 		lfu.minFreq = 1
 	}
