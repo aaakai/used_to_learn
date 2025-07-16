@@ -42,9 +42,12 @@ func (tb *TokenBucket) GetToken() bool {
 	}
 	// 检查是否有足够的令牌可用，如果有，减少令牌数并返回 true，否则返回 false
 	if tb.tokens > 0 {
-		tb.tokens-- // 使用一个令牌
-		return true // 成功获取令牌
+		// 使用一个令牌
+		tb.tokens--
+		// 成功获取令牌
+		return true
 	}
-	return false // 桶中没有足够的令牌，获取失败
+	// 桶中没有足够的令牌，获取失败
+	return false
 
 }
