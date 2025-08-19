@@ -17,7 +17,7 @@ type User struct {
 }
 
 func main() {
-	test.GoroutineTest()
+	test.StringTest()
 }
 
 func jsonText() {
