@@ -17,7 +17,7 @@ type User struct {
 }
 
 func main() {
-	test.InterfaceT()
+	test.RangeTest()
 }
 
 func jsonText() {

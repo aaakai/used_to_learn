@@ -1,6 +1,9 @@
 package test
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 type Duck interface {
 	Walk()
@@ -31,4 +34,11 @@ func InterfaceT() {
 		cat := duck.(*Cat)
 		cat.Walk()
 	}
+}
+
+func Interface1() {
+	v := reflect.ValueOf(1)
+	i := v.Interface().(int)
+	fmt.Println(reflect.TypeOf(i))
+	fmt.Println(reflect.ValueOf(i))
 }
