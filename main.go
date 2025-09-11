@@ -1,7 +1,6 @@
 package main
 
 import (
-	"awesomeProject/test"
 	"encoding/json"
 	"fmt"
 	"regexp"
@@ -17,7 +16,7 @@ type User struct {
 }
 
 func main() {
-	test.RangeTest()
+
 }
 
 func jsonText() {
